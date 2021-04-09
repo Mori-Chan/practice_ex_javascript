@@ -8,10 +8,13 @@ const flexChild = document.getElementsByClassName("flex-child");
 let timer = document.getElementById('timer');
 // let timer = document.getElementById('timer').value;
 
+let flg = false;
+
 let interval;
 
 function start() {
   // let random = Math.floor( Math.random() * 24 ) + 1;
+  flg = true;
   let randoms = [];
   let min = 1, max = flexChild.length + 1;
 
@@ -26,6 +29,33 @@ function start() {
       }
     }
   }
+  for(var i = 0; i < flexChild.length; i++){
+    flexChild[i].addEventListener('click',function(){
+      let num = parseInt(this.innerHTML);
+      let elem = this;
+      if(flg){
+        if(randoms.includes(num) && (Math.min.apply(null, randoms) === num || randoms.length === 1)) {
+          elem.style.background = 'blue';
+          var idx = randoms.indexOf(num);
+          if(idx >= 0){
+            randoms.splice(idx, 1);
+          }
+        }
+        if (randoms.length === 0) {
+          clearInterval(interval);
+          setTimeout(function(){
+            alert(timer.value);
+            for(let j = 0; j < flexChild.length; j++) {
+              flexChild[j].style.background = 'aquamarine';
+            }
+            timer.value = updateTime(0);
+            start();
+          }, 10);
+        }
+      }
+    },false);
+  }
+
   const startTime = new Date().getTime();
   // timer.value = countUp(startTime);
   interval = setInterval( function() {
@@ -65,13 +95,26 @@ function updateTime(elapsedTime) {
   // return time;
 }
 
+// function clickNum(number, randoms) {
+//   if(number) {
+//     let num = number.innerHTML;
+//     if(num) {
+//       if(randoms.includes(num)) {
+//         num.style.background = 'bulue';
+//       }
+//     }
+//   }
+// }
+
 function end() {
-  clearInterval(interval);
-  alert(timer.value);
-  for(let i = 0; i < flexChild.length; i++) {
-    flexChild[i].innerHTML= '';
+  if(flg){
+    clearInterval(interval);
+    for(let i = 0; i < flexChild.length; i++) {
+      flexChild[i].innerHTML= '';
+      flexChild[i].style.background = 'aquamarine';
+    }
+    timer.value = updateTime(0);
+    // timer.value = '00:00:111';
+    // console.log(timer.value);
   }
-  timer.value = updateTime(0);
-  // timer.value = '00:00:111';
-  // console.log(timer.value);
 }
