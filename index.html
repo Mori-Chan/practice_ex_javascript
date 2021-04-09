@@ -11,19 +11,19 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <button class="start">スタート</button>
+          <button id="start">スタート</button>
           <br />
-          <button class="end">終了</button>
+          <button id="end">終了</button>
           <br />
-          <input type="text" />
+          <input type="text" id="timer" value="00:00:000" />
         </div>
-        <div class="col-sm-9 flex-box">
+        <div class="col-sm-9">
           <div class="row">
             <div class="flex-child col-sm-2"></div>
             <div class="flex-child col-sm-2"></div>
@@ -63,4 +63,5 @@
       </div>
     </div>
   </body>
+  <script src="./js/main.js"></script>
 </html>

@@ -1,0 +1,17 @@
+.flex-child {
+  background-color: aquamarine;
+  height: 120px;
+  margin: 1%;
+  border: 1px solid #000;
+}
+
+button {
+  height: 15%;
+  width: 100%;
+  margin: 10% 0;
+}
+
+input {
+  width: 100%;
+  text-align: center;
+}
