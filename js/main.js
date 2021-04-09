@@ -55,9 +55,9 @@ function updateTime(elapsedTime) {
   //HTML 上で表示の際の桁数を固定する　例）3 => 03　、 12 -> 012
   //javascriptでは文字列数列を連結すると文字列になる
   //文字列の末尾2桁を表示したいのでsliceで負の値(-2)引数で渡してやる。
-  m = ('0' + m).slice(-2);
+  m = ('0' + m).slice(-1);
   s = ('0' + s).slice(-2);
-  ms = ('0' + ms).slice(-3);
+  ms = ('0' + ms).slice(-2);
 
   return m + ':' + s + ':' + ms;
   // let time = m + ':' + s + ':' + ms;
